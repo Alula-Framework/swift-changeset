@@ -143,6 +143,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `& Sendable`. Keypath literals infer as `Sendable`, so ordinary call sites are
   unaffected.
 
-[Unreleased]: https://github.com/Swift-Flight/swift-changeset/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/Swift-Flight/swift-changeset/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/Swift-Flight/swift-changeset/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Flight-Framework/swift-changeset/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Flight-Framework/swift-changeset/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/Flight-Framework/swift-changeset/releases/tag/v0.1.0

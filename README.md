@@ -28,7 +28,7 @@ try await repo.update(changeset.validatedChanges())
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Swift-Flight/swift-changeset", from: "0.2.0")
+    .package(url: "https://github.com/Flight-Framework/swift-changeset", from: "0.2.0")
 ]
 ```
 

@@ -5,7 +5,7 @@ Thanks for your interest in swift-changeset.
 ## Getting set up
 
 ```bash
-git clone https://github.com/Swift-Flight/swift-changeset
+git clone https://github.com/Flight-Framework/swift-changeset
 cd swift-changeset
 swift build
 swift test
