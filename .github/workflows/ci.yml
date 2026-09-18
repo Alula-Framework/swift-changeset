@@ -33,6 +33,27 @@ jobs:
       - name: Test
         run: swift test
 
+  test-consumer-toolchain:
+    name: Test (Swift 6.3, the toolchain consumers actually use)
+    runs-on: ubuntu-latest
+    container: swift:6.3.3
+    # The matrix above covers this package's declared floor — 6.0 — and 6.2,
+    # which is right for what it promises. It cannot cover 6.3:
+    # swift-actions/setup-swift only indexes up to 6.2, so adding "6.3" there
+    # fails to install rather than failing to compile.
+    #
+    # Every consumer builds this package on 6.3 or later; flight-data declares
+    # swift-tools-version 6.3. Without this job a 6.3-only break reaches them
+    # with every check here green. A container sidesteps the indexing limit.
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build (warnings are errors)
+        run: swift build -Xswiftc -warnings-as-errors
+
+      - name: Test
+        run: swift test
+
   docs:
     name: Build documentation
     runs-on: ubuntu-latest
