@@ -6,6 +6,39 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-09-19
+
+No API change. Tests and the docs job.
+
+### Fixed
+
+- **The docs job builds again.** It had been red since 2026-08-29, and the
+  commit before the fix was an attempt at the same thing that did not work:
+  seven curated links disambiguated `updateChange` overloads as
+  `-(WritableKeyPath<Model,V>&Sendable,_)`, and DocC spells that type without
+  the ampersand. The error says so, with the exact replacement for each link.
+
+### Testing
+
+- **The laws dirty tracking obeys, over generated edit programs.** The suite
+  covered these one case at a time — change a field, expect it dirty; change
+  it back, expect it clean — which says nothing about the seventh edit in a
+  sequence, where last-write-wins and revert-detection actually interact.
+
+  Four laws over 300 generated programs each: a field is dirty exactly when
+  its last assigned value differs from the original; `hasChanges` agrees with
+  the per-field answers; `applyChanges(to:)` is the original with exactly the
+  recorded changes on it; and edits to different fields commute, while edits
+  within a field do not.
+
+  Values are drawn from a pool containing each field's original, so the revert
+  branch runs by construction rather than by luck.
+
+- **CI covers Swift 6.3**, the toolchain consumers are on. The matrix ran 6.0
+  and 6.2, and a 6.3-only break would have reached flight-data with every
+  check here green.
+
+
 ## [0.2.0] - 2026-08-29
 
 ### Added
