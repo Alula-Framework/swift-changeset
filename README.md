@@ -8,7 +8,9 @@ failure at once, and hands your persistence layer a neutral description of the
 write — one a SQL driver, a document store, or a key-value store can each
 translate into their own dialect.
 
-Zero dependencies. Swift 6, strict concurrency, no `@unchecked` anywhere.
+Zero dependencies for anyone who adopts it — the test suite's property-based
+checker is a test-target dependency, which SwiftPM resolves for the root package
+only. Swift 6, strict concurrency, no `@unchecked` anywhere.
 
 ```swift
 let changeset = Changeset(original: user)

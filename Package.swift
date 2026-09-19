@@ -16,6 +16,16 @@ let package = Package(
         // convention) so it never collides with the Changeset type itself.
         .library(name: "Changesets", targets: ["Changesets"])
     ],
+    dependencies: [
+        // Test-only, and it stays that way: SwiftPM resolves a dependency's
+        // test-target dependencies for the root package only, so an adopter of
+        // Changesets still resolves nothing. Property-based testing with
+        // shrinking, for the laws dirty tracking has to obey across every
+        // order of edits rather than the handful written by hand.
+        .package(
+            url: "https://github.com/x-sheep/swift-property-based.git",
+            .upToNextMinor(from: "2.0.0"))
+    ],
     targets: [
         .target(
             name: "Changesets",
@@ -23,7 +33,10 @@ let package = Package(
         ),
         .testTarget(
             name: "ChangesetsTests",
-            dependencies: ["Changesets"],
+            dependencies: [
+                "Changesets",
+                .product(name: "PropertyBased", package: "swift-property-based"),
+            ],
             swiftSettings: [.swiftLanguageMode(.v6)]
         ),
     ]
