@@ -52,10 +52,10 @@
 /// - ``change(_:_:)-q3ik``
 /// - ``change(_:_:)-2tpno``
 /// - ``forceChange(_:_:)``
-/// - ``updateChange(_:_:)-(WritableKeyPath<Model,V>&Sendable,_)``
-/// - ``updateChange(_:_:)-(WritableKeyPath<Model,V?>&Sendable,_)``
-/// - ``updateChange(_:orError:_:)-(WritableKeyPath<Model,V>&Sendable,_,_)``
-/// - ``updateChange(_:orError:_:)-(WritableKeyPath<Model,V?>&Sendable,_,_)``
+/// - ``updateChange(_:_:)-(WritableKeyPath<Model,V>Sendable,_)``
+/// - ``updateChange(_:_:)-(WritableKeyPath<Model,V?>Sendable,_)``
+/// - ``updateChange(_:orError:_:)-(WritableKeyPath<Model,V>Sendable,_,_)``
+/// - ``updateChange(_:orError:_:)-(WritableKeyPath<Model,V?>Sendable,_,_)``
 /// - ``deleteChange(_:)``
 /// - ``merge(_:)``
 ///
@@ -295,7 +295,7 @@ public struct Changeset<Model: TableModel>: Sendable {
     ///
     /// Because it runs *before* validation in a normal pipeline, a rule that
     /// follows sees the normalized value. For a normalization that can
-    /// *fail*, use ``updateChange(_:orError:_:)-(WritableKeyPath<Model,V>&Sendable,_,_)``.
+    /// *fail*, use ``updateChange(_:orError:_:)-(WritableKeyPath<Model,V>Sendable,_,_)``.
     public consuming func updateChange<V: Sendable>(
         _ field: WritableKeyPath<Model, V> & Sendable, _ transform: (V) -> V
     ) -> Changeset {
@@ -353,7 +353,7 @@ public struct Changeset<Model: TableModel>: Sendable {
     ///
     /// A field with no recorded change is left alone and `transform` is not
     /// called — absence is ``validateRequired(_:)``'s job, exactly as with
-    /// ``updateChange(_:_:)-(WritableKeyPath<Model,V>&Sendable,_)``.
+    /// ``updateChange(_:_:)-(WritableKeyPath<Model,V>Sendable,_)``.
     public consuming func updateChange<V: Sendable>(
         _ field: WritableKeyPath<Model, V> & Sendable,
         orError message: String,

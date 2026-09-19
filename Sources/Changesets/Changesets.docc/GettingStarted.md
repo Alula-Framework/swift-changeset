@@ -74,7 +74,7 @@ changeset.isValid                 // true
 ```
 
 When the normalization can *fail* — parsing a phone number, canonicalizing a
-URL — ``Changeset/updateChange(_:orError:_:)-(WritableKeyPath<Model,V>&Sendable,_,_)`` takes a transform that may
+URL — ``Changeset/updateChange(_:orError:_:)-(WritableKeyPath<Model,V>Sendable,_,_)`` takes a transform that may
 return `nil`, and records the message you give it when it does:
 
 ```swift
