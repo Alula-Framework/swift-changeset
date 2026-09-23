@@ -6,6 +6,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- The repository moved to the Alula-Framework organization, after Flight was
+  renamed Alula. GitHub redirects the old URL.
+
 ## [0.2.2] - 2026-09-19
 
 No API change. Tests and the docs job.
