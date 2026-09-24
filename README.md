@@ -175,6 +175,11 @@ do {
 }
 ```
 
+`DatabaseError` here is [Hangar](https://github.com/Alula-Framework/hangar)'s
+(0.10.0 and later), which types every server error — `isUniqueViolation`,
+`constraint`, `columnName`. Another store reports the same failure its own
+way; `addError` takes it either way.
+
 ## Previewing the result
 
 `applyChanges()` materializes the model a changeset describes — for a form

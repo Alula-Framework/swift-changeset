@@ -71,6 +71,9 @@ do {
 }
 ```
 
+`DatabaseError` is Hangar's typed server error (Hangar 0.10.0 and later);
+with another store, catch whatever it reports for a unique violation.
+
 The changeset becomes invalid, so ``Changeset/validatedChanges()`` refuses it
 exactly as if a rule had failed. The important part is that the message ends
 up in the *same* stream as the rule failures — a form has one place to look,

@@ -120,8 +120,9 @@ extension Changeset {
     /// }
     /// ```
     ///
-    /// The changeset becomes invalid, so ``validatedChanges()`` will refuse
-    /// it exactly as if a rule had failed.
+    /// (`DatabaseError` is Hangar's typed server error.) The changeset becomes
+    /// invalid, so ``validatedChanges()`` will refuse it exactly as if a rule
+    /// had failed.
     public consuming func addError<V>(_ field: KeyPath<Model, V>, _ message: String) -> Changeset {
         appending(ChangesetError(field: Model.column(for: field).name, message: message))
     }
